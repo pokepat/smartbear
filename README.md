@@ -19,6 +19,8 @@ Checkout the project
 
 <h2>### To execute the Unit Test cases </h2>
 Navigate to BritishSpokenTimeEvaluatorTest.java file in the src/test/java Test source folder
-<br> Run as JUNIT Tests
+<br> Run as JUNIT Test
+<br> Navigate to BritishSpokenTimeEvaluatorTest.java file in the src/test/java Test source folder
+<br> Run as JUNIT Test
 
 <br>Note : Please add/modify other test cases to validate the code
