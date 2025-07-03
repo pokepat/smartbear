@@ -21,9 +21,8 @@ public class BritishSpokenTimeEvaluator {
 	 */
 	public static String getBritishSpokenTime(String timeInput) {
 		String spokenTimeResult = "";
-		
 		try {
-			return BritishSpokenTimeUtil.evaluateTimeInSpokenLanguage(timeInput);
+			return BritishSpokenTimeUtil.convertToSpokenLanguage(timeInput);
 		} catch (DateTimeParseException e) {
 			spokenTimeResult = ErrorConstants.INVALID_TIME_FORMAT;
 		} catch (Exception e) {

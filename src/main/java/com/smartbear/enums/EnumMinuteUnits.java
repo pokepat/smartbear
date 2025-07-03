@@ -30,4 +30,15 @@ public enum EnumMinuteUnits {
 		this.number = number;
 		this.word = word;
 	}
+	
+	public String word() {
+        return word;
+    }
+
+    public static EnumMinuteUnits of(int number) {
+        for (EnumMinuteUnits mu : values()) {
+            if (mu.number == number) return mu;
+        }
+        throw new IllegalArgumentException("Unsupported unit minute: " + number);
+    }
 }

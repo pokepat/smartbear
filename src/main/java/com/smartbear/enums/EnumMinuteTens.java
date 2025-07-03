@@ -1,6 +1,7 @@
 package com.smartbear.enums;
 
-enum EnumMinuteTens {
+public enum EnumMinuteTens {
+	// TEN is covered in EnumMinuteUnits
 	TWENTY(20, "twenty"),
 	THIRTY(30, "thirty"),
 	FORTY(40, "forty"),
@@ -14,7 +15,16 @@ enum EnumMinuteTens {
 		this.word = word;
 	}
 	
-	
+	public String word() {
+        return word;
+    }
+
+    public static EnumMinuteTens of(int number) {
+        for (EnumMinuteTens mt : values()) {
+            if (mt.number == number) return mt;
+        }
+        throw new IllegalArgumentException("Unsupported tens minute: " + number);
+    }
 	
 	
 	

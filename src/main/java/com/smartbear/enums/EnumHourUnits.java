@@ -25,4 +25,15 @@ public enum EnumHourUnits {
 	}
 	
 	
+	public String word() {
+        return word;
+    }
+
+    public static EnumHourUnits of(int number) {
+        for (EnumHourUnits h : values()) {
+            if (h.number == number) return h;
+        }
+        throw new IllegalArgumentException("Unsupported hour: " + number);
+    }
+	
 }
