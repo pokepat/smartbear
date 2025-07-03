@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import com.smartbear.constants.BritishSpokenTimeConstants;
+import com.smartbear.constants.TimeConstants;
 import com.smartbear.enums.EnumHourUnits;
 import com.smartbear.enums.EnumMinuteTens;
 import com.smartbear.enums.EnumMinuteUnits;
@@ -12,13 +12,14 @@ import com.smartbear.enums.EnumMinuteUnits;
 public class BritishSpokenTimeUtil {
 
 	public static String convertToSpokenLanguage(String timeInput) throws DateTimeParseException {
-		LocalTime time = LocalTime.parse(timeInput, DateTimeFormatter.ofPattern(BritishSpokenTimeConstants.HOUR_MIN_PATTERN)); // used for input validation
+		
+		LocalTime time = LocalTime.parse(timeInput, DateTimeFormatter.ofPattern(TimeConstants.HOUR_MIN_PATTERN)); // used for input validation
 		int hour = time.getHour();
 		int minute = time.getMinute();
 		
 		// Midnight & noon cases
-		if (hour == 0 && minute == 0) return BritishSpokenTimeConstants.MIDNIGHT;
-        if (hour == 12 && minute == 0) return BritishSpokenTimeConstants.NOON;
+		if (hour == 0 && minute == 0) return TimeConstants.MIDNIGHT;
+        if (hour == 12 && minute == 0) return TimeConstants.NOON;
 		
         int twelveHourFormat = hour % 12 == 0 ? 12 : hour % 12;
         String spokenHour = EnumHourUnits.of(twelveHourFormat).word();
@@ -26,22 +27,24 @@ public class BritishSpokenTimeUtil {
         
         // For minutes 15, 30 & 45
         if (minute == 0) {
-            return spokenHour + BritishSpokenTimeConstants.OCLOCK;
+            return spokenHour + TimeConstants.OCLOCK;
         } else if (minute == 15) {
-            return BritishSpokenTimeConstants.QUARTER_PAST + spokenHour;
+            return TimeConstants.QUARTER + TimeConstants.PAST + spokenHour;
         } else if (minute == 30) {
-            return BritishSpokenTimeConstants.HALF_PAST + spokenHour;
+            return TimeConstants.HALF + TimeConstants.PAST + spokenHour;
         } else if (minute == 45) {
-            return "quarter to " + getNextHourWord(hour);
+            return TimeConstants.QUARTER + TimeConstants.TO + getNextHourWord(hour);
         }
         
         // For minutes divisible by 5 (according to testcases given in assignment)
         if (minute % 5 == 0) {
+        	// use minutes past if they are less than 30
             if (minute < 30) {
-                return minute + " minutes past " + spokenHour;
+                return minute + TimeConstants.PAST + spokenHour;
             } else {
+            	// else use minutes to
                 int remaining = 60 - minute;
-                return remaining + " minutes to " + getNextHourWord(hour);
+                return remaining + TimeConstants.TO + getNextHourWord(hour);
             }
         }
         
