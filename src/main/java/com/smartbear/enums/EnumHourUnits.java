@@ -2,7 +2,6 @@ package com.smartbear.enums;
 
 public enum EnumHourUnits {
 
-	ZERO(0, "zero"),
 	ONE(1, "one"),
 	TWO(2, "two"),
 	THREE(3, "three"),
