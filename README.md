@@ -9,7 +9,7 @@ The <b>BritishSpokenTimeEvaluator.java</b> file is the starting point of the pro
 <br>
 <h2> To execute the Code </h2>
 Checkout the project
-<br> Navigate to BritishSpokenTimeEvaluator.java file
+<br> Navigate to BritishSpokenTimeEvaluator.java file in src/main/java Source folder com.smartbear package
 <br> Run as Java program
 
 <br>You will be prompted with message for input.
