@@ -40,11 +40,11 @@ public class BritishSpokenTimeUtil {
         if (minute % 5 == 0) {
         	// use minutes past if they are less than 30
             if (minute < 30) {
-                return minute + TimeConstants.PAST + spokenHour;
+                return minuteToWords(minute) + TimeConstants.PAST + spokenHour;
             } else {
             	// else use minutes to
                 int remaining = 60 - minute;
-                return remaining + TimeConstants.TO + getNextHourWord(hour);
+                return minuteToWords(remaining) + TimeConstants.TO + getNextHourWord(hour);
             }
         }
         
