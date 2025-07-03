@@ -49,12 +49,21 @@ public class BritishSpokenTimeEvaluatorTest {
             Arguments.of("22:22", "ten twenty two"),
             Arguments.of("13:41", "one forty one"),
             Arguments.of("13:03", "one three"),
+            Arguments.of("11:54", "eleven fifty four"),
+            Arguments.of("00:30", "half past twelve"),
+            Arguments.of("18:22", "six twenty two"),
+            Arguments.of("6:22", "six twenty two"),
+            Arguments.of("17:15", "quarter past five"),
             
             // Error Cases
             Arguments.of("13 :03", ErrorConstants.INVALID_TIME_FORMAT),
             Arguments.of("13:0", ErrorConstants.INVALID_TIME_FORMAT),
             Arguments.of("233:03", ErrorConstants.INVALID_TIME_FORMAT),
             Arguments.of("13.55", ErrorConstants.INVALID_TIME_FORMAT),
+            Arguments.of("13.90", ErrorConstants.INVALID_TIME_FORMAT),
+            Arguments.of("90.50", ErrorConstants.INVALID_TIME_FORMAT),
+            Arguments.of("90.90", ErrorConstants.INVALID_TIME_FORMAT),
+            Arguments.of("10.60", ErrorConstants.INVALID_TIME_FORMAT),
             Arguments.of("abcd", ErrorConstants.INVALID_TIME_FORMAT)
             
         );
